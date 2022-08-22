@@ -22,7 +22,7 @@ return {
                 })
             end
         end,
-        ft = { 'python', 'rust', 'javascript', 'typescript' }
+        ft = { 'c', 'python', 'rust', 'javascript', 'typescript' }
     },
     {
         'hrsh7th/cmp-nvim-lsp',
