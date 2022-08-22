@@ -1,0 +1,27 @@
+# Create a source template to easily defer plugin loading.
+[templates.defer]
+value = "zsh-defer source '{{ file }}'"
+each = true
+
+# Change the default sourcing method to defer.
+apply = ["defer"]
+
+
+# Plugins
+# =======
+
+# This plugin needs to be loaded before other plugins.
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ["fpath", "defer"]
