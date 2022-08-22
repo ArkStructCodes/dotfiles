@@ -1,15 +1,15 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
-	config = function()
-		require('nvim-treesitter.configs').setup {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+        require('nvim-treesitter.configs').setup {
             ensure_installed = {
-                'bash', 'javascript', 'lua', 'python', 'rust',
+                'bash', 'c', 'javascript', 'lua', 'python', 'rust',
                 'html', 'css', 'markdown', 'json', 'yaml', 'toml'
             },
-			highlight = { enable = true },
-			indent = { enable = true }
-		}
-	end,
-	run = ':TSUpdate',
-	event = { 'BufRead', 'BufNewFile' }
+            highlight = { enable = true },
+            indent = { enable = true }
+        }
+    end,
+    run = ':TSUpdate',
+    event = { 'BufRead', 'BufNewFile' }
 }

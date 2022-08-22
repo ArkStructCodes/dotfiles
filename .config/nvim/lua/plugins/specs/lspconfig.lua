@@ -24,28 +24,28 @@ return {
         end,
         ft = { 'python', 'rust', 'javascript', 'typescript' }
     },
-	{
-		'hrsh7th/cmp-nvim-lsp',
-		after = 'nvim-lspconfig',
-		config = function()
-			local cmp_src = require('cmp_nvim_lsp')
+    {
+        'hrsh7th/cmp-nvim-lsp',
+        after = 'nvim-lspconfig',
+        config = function()
+            local cmp_src = require('cmp_nvim_lsp')
 
-			local servers = {
-				-- pyright, typescript, typescript-language-server (npm)
+            local servers = {
+                -- pyright, typescript, typescript-language-server (npm)
                 'pyright', 'tsserver',
                 -- clang, rust-analyzer (native)
-				'clangd', 'rust_analyzer' 
-			}
+                'clangd', 'rust_analyzer' 
+            }
 
-			local capabilities = cmp_src.update_capabilities(
-				vim.lsp.protocol.make_client_capabilities()
-			)
+            local capabilities = cmp_src.update_capabilities(
+                vim.lsp.protocol.make_client_capabilities()
+            )
 
-			for i = 1, #servers do
-				require('lspconfig')[servers[i]].setup {
-					capabilities = capabilities
-				}
-			end
-		end
-	}
+            for i = 1, #servers do
+                require('lspconfig')[servers[i]].setup {
+                    capabilities = capabilities
+                }
+            end
+        end
+    }
 }
