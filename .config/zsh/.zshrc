@@ -1,3 +1,17 @@
+# Plugins
+# =======
+
+# Load plugins using 'sheldon' plugin manager.
+eval "$(sheldon source)"
+
+# Configure plugins.
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#686868"
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+
+# Config
+# ======
+
 source "${ZDOTDIR}/core/aliases.zsh"
 source "${ZDOTDIR}/core/options.zsh"
 source "${ZDOTDIR}/core/params.zsh"
@@ -17,12 +31,3 @@ zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
 # Highlight completion menu items.
 zstyle ':completion:*' menu select
 
-# Plugins
-# =======
-
-# Load plugins using 'sheldon' plugin manager.
-eval "$(sheldon source)"
-
-# Configure plugins.
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#686868"
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
