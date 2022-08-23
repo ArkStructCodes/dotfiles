@@ -1,2 +1,1 @@
-# files-and-directories-prefixed-using-the-dot-character
-Oh no, my dotfiles! They're broken!
+Don't even try to think about using these you piece.
