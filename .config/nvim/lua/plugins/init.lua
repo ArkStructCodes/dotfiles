@@ -1,6 +1,4 @@
 local packer = prequire('packer')
-
-local cmd = vim.cmd
 local fn = vim.fn
 
 -- Disable built-in plugins that I almost never use.
