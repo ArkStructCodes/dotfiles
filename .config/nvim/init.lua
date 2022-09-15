@@ -1,10 +1,11 @@
--- Load utility functions into the global namespace.
 require('util')
 
--- This module needs to be loaded first.
+-- Core configuration.
+require('core.options')
+require('core.keymaps')
+
+-- This module needs to be loaded before plugins.
 prequire('impatient')
 
--- Load evrything else.
-prequire('core.options')
-prequire('core.keymaps')
-prequire('plugins')
+-- Loads external plugins.
+require('plugins')

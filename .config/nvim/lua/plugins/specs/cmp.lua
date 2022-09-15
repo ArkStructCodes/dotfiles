@@ -1,7 +1,34 @@
+KIND_ICONS = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "ﴯ",
+    Interface = "",
+    Module = "",
+    Property = "ﰠ",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = ""
+}
+
 return {
     'hrsh7th/nvim-cmp',
     requires = {
-        'onsails/lspkind-nvim',
         'L3MON4D3/LuaSnip',
         --  Completion sources.
         'saadparwaiz1/cmp_luasnip',
@@ -11,7 +38,6 @@ return {
     },
     config = function()
         local cmp = require('cmp')
-        local lspkind = require('lspkind')
         local luasnip = require('luasnip')
 
         cmp.setup {
@@ -33,15 +59,19 @@ return {
             sources = cmp.config.sources {
                 { name = 'nvim_lua' },
                 { name = 'nvim_lsp' },
-                { name = 'buffer', keyword_length = 4 }
+                { name = 'buffer', keyword_length = 3 }
             },
-            formatting = { format = lspkind.cmp_format() },
+            formatting = {
+                fields = { 'kind', 'abbr' },
+                format = function(_, vim_item)
+                    vim_item.kind = KIND_ICONS[vim_item.kind] or ""
+                    return vim_item
+                end
+            }
         }
         
         cmp.setup.cmdline(':', {
-            sources = cmp.config.sources {
-                { name = 'cmdline', keyword_length = 2 }
-            },
+            sources = cmp.config.sources {{ name = 'cmdline' }},
             mapping = cmp.mapping.preset.cmdline()
         })
     end

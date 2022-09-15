@@ -1,22 +1,37 @@
 local packer = prequire('packer')
 local fn = vim.fn
+local g = vim.g
 
 -- Disable built-in plugins that I almost never use.
-disable_plugins {
+local disabled_builtins = {
+    'gzip',
+    'zip',
+    'zipPlugin',
+    'tar',
+    'tarPlugin',
+    'getscript',
+    'getscriptPlugin',
+    'vimball',
+    'vimballPlugin',
     '2html_plugin',
     'did_load_filetypes',
-    'gzip',
-    'netrw',
-    'netrwPlugin',
-    'man',
     'matchit',
     'matchparen',
+    'logiPat',
+    'rrhelper',
+    'netrw',
+    'netrwPlugin',
+    'netrwSettings',
+    'netrwFileHandlers',
     'remote_plugins',
-    'tarPlugin',
-    'tar',
-    'zipPlugin',
-    'zip'
+    'man',
+    'tutor_mode_plugin'
 }
+
+-- Setting loaded_foo to 1 disbles loading plugin foo.
+for i = 1, #disabled_builtins do
+    g['loaded_'..disabled_builtins[i]] = 1
+end
 
 -- If packer is not installed, automatically clone it.
 if packer == nil then
