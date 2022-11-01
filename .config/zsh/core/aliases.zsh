@@ -1,39 +1,27 @@
 # apt
-# alias ac="apt autoclean"
-# alias aun="apt autoremove"
+alias i="apt install"
+alias ac="apt autoclean"
+alias un="apt remove"
+alias aun="apt autoremove"
 
 # grep
 alias grep="grep --color"
 alias egrep="grep -E --color"
 alias fgrep="grep -F --color"
 
-# git
-alias ga="git add"
-alias gc="git commit"
-alias gp="git push"
-alias gs="git status"
-alias gch="git checkout"
-alias gcl="git clone"
-alias gpu="git pull"
-
 # lsd
 alias l="lsd -l"
-
-# pkg
-# alias i="pkg i"
-# alias u="pkg up"
-# alias un="pkg un"
 
 # python
 alias py="python"
 
 activate() {
-    local script="$(pwd)/.venv/bin/activate"
-    if [ -f "$script" ]; then
-        source "$script"
-        echo "Venv loaded"
+    local script="${1:-$(pwd)}/.venv/bin/activate"
+    if [[ -f $script ]]; then
+        echo "Loading venv..."
+        source $script
     else
-        echo "No venv found in current directory"
+        echo "No venv found in the given directory"
     fi
 }
 
