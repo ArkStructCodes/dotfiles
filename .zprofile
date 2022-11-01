@@ -8,5 +8,5 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Extend PATH to include user-installed binaries.
-path+=("${CARGO_HOME}/bin" "${HOME}/.local/bin")
+path+=("${HOME}/.local/bin")
 export PATH
