@@ -44,17 +44,27 @@ if packer == nil then
     }
 end
 
-return packer.startup(function()
-    -- Packer manages itself.
-    use 'wbthomason/packer.nvim'
+return packer.startup({
+    function()
+        -- Packer manages itself.
+        use 'wbthomason/packer.nvim'
 
-    -- Faster loading.
-    use 'lewis6991/impatient.nvim'
-    use 'nathom/filetype.nvim'
+        -- Faster loading.
+        use 'lewis6991/impatient.nvim'
+        use 'nathom/filetype.nvim'
 
-    -- Load plugins with customized configuration.
-    local specs_path = fn.stdpath('config')..'/lua/plugins/specs'
-    find_scripts(specs_path, function(name)
-        use(prequire('plugins.specs.'..name))
-    end)
-end)
+        -- Load plugins with customized configuration.
+        local specs_path = fn.stdpath('config')..'/lua/plugins/specs'
+        find_scripts(specs_path, function(name)
+            use(prequire('plugins.specs.'..name))
+        end)
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float { border = 'single' }
+            end,
+            prompt_border = 'single'
+        }
+    }
+})

@@ -7,6 +7,6 @@ return {
             renderer = { indent_markers = { enable = true }}
         }
 
-        map('n', '<Leader>n', ':NvimTreeOpen<CR>')
+        map('n', '<Leader>m', ':NvimTreeOpen<CR>')
     end
 }
