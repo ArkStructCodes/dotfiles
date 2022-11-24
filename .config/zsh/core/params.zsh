@@ -19,15 +19,19 @@ SAVEHIST=10000
 # USER
 # ====
 
-# Change the storage location of cargo.
+# Relocate the completion data.
+COMPFILE="${XDG_CACHE_HOME}/zsh/compdump-${ZSH_VERSION}"
+COMPCACHE="${XDG_CACHE_HOME}/zsh/compcache"
+
+# Relocate cargo data.
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 
-# Change the location of npm user config.
+# Relocate npm config.
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 
 # Add executables installed via these programs to PATH.
 path+=(
-    "${XDG_DATA_HOME}/npm/bin"
     "${CARGO_HOME}/bin"
+    "${XDG_DATA_HOME}/npm/bin"
 )
 export PATH

@@ -22,6 +22,9 @@ github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
+[plugins.zsh-autosuggestions-config]
+inline = "export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)"
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["fpath", "defer"]

@@ -14,8 +14,8 @@ setopt PROMPT_SUBST
 # Load necessary built-in functions.
 autoload -Uz add-zsh-hook vcs_info
 
-zstyle ":vcs_info:*" enable git      # Enable support for git.
-zstyle ":vcs_info:*" formats " ⇒ %b" # Format the VCS info message.
+zstyle ":vcs_info:*" enable git
+zstyle ":vcs_info:git:*" formats " ⇒ %b"
 
 _prompt_shorten_cwd() {
     local cwd="$(print -P '%~')"
