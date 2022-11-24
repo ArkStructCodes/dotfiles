@@ -5,15 +5,16 @@ o.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- Highlight the line that the cursor is in.
 o.cursorline = true
-o.cursorlineopt = { 'screenline' }
+o.cursorlineopt = { 'number', 'screenline' }
 
 -- Use 4 spaces instead of tabs for each indent step.
 o.expandtab = true
 o.shiftwidth = 0
 o.tabstop = 4
 
--- Show the line number before each line.
+-- Show relative line numbers.
 o.number = true
+o.relativenumber = true
 
 -- Only save the commands and search history in ShaDa.
 o.shada = { "'0", '<0', 'h', '/100', ':1000' }
