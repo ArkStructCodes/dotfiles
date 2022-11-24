@@ -22,9 +22,12 @@ SAVEHIST=10000
 # Change the storage location of cargo.
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 
-# Add the new cargo location to PATH.
-path+=("${CARGO_HOME}/bin")
-export PATH
-
 # Change the location of npm user config.
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
+
+# Add executables installed via these programs to PATH.
+path+=(
+    "${XDG_DATA_HOME}/npm/bin"
+    "${CARGO_HOME}/bin"
+)
+export PATH
