@@ -11,6 +11,12 @@ return {
                 hl.CursorLineNr = { fg = c.orange }
             end
         }
+
+        -- Apply the 'night' variant of the colorscheme.
         vim.cmd('colorscheme tokyonight-night')
+
+        -- Override group settings and link to comment.
+        -- This is a temporary solution.
+        vim.cmd('highlight! link @string.documentation @comment')
     end
 }

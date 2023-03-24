@@ -1,12 +1,12 @@
 return {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-tree.lua',
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function()
         require('nvim-tree').setup {
-            view = { adaptive_size = true },
-            renderer = { indent_markers = { enable = true }}
+            renderer = { indent_markers = { enable = true }},
+            git = { enable = false }
         }
 
-        map('n', '<Leader>m', ':NvimTreeOpen<CR>')
+        map('n', '<Leader>m', ':NvimTreeFocus<CR>')
     end
 }
