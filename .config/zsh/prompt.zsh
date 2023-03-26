@@ -3,8 +3,8 @@
 
 # %b         => The current VCS branch.
 # %B...%b    => Change the text style to bold.
-# %F{x}...%f => Change the foreground color of text.
-# %xv        => Access the items of the 'psvar' array.
+# %F{x}...%f => Change the foreground color of the text to x.
+# %xv        => Access the x-th item of the 'psvar' array.
 
 
 # Enable parameter expansion, command substitution, and arithmetic

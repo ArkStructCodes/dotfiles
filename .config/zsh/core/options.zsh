@@ -35,12 +35,3 @@ setopt HIST_IGNORE_ALL_DUPS
 # Remove superfluous blanks from each command line being added to the history
 # list.
 setopt HIST_REDUCE_BLANKS
-
-
-# Prompting
-# =========
-
-# If set, parameter expansion, command substitution and arithmetic expansion
-# are performed in prompts. Substitutions within prompts do not affect the
-# command status.
-setopt PROMPT_SUBST
