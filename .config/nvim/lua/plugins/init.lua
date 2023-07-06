@@ -51,7 +51,6 @@ return packer.startup({
 
         -- Faster loading.
         use 'lewis6991/impatient.nvim'
-        use 'nathom/filetype.nvim'
 
         -- Load plugins with customized configuration.
         local specs_path = fn.stdpath('config')..'/lua/plugins/specs'
