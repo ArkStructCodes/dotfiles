@@ -1,2 +1,5 @@
-# Ignore the lua file compiled by packer.
+# Ignore the lua infile compiled by packer.
 .config/nvim/plugin
+
+# NPM automatically expands paths in npmrc.
+.config/npm/npmrc
