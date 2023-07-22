@@ -1,9 +1,9 @@
 LSP_FILETYPES = { 'c', 'python', 'rust', 'javascript', 'typescript' }
 
 SIGN_ICONS = {
-    Error = ' ',
-    Warn = ' ',
-    Hint = ' ',
+    Error = ' ',
+    Warn = ' ',
+    Hint = ' ',
     Info = ' '
 }
 

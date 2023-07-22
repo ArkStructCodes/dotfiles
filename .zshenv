@@ -12,7 +12,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 
 # Extend PATH to include user-installed binaries.
 path+=(
