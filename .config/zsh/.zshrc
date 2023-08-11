@@ -27,10 +27,3 @@ zstyle ':completion:*' menu select
 # Load completions.
 autoload -Uz compinit
 zsh-defer compinit -d "$XDG_CACHE_HOME/zsh/compdump-$ZSH_VERSION" 
-
-
-# USER SETUP
-# ==========
-
-# Must be run after compinit is called.
-eval "$(zoxide init zsh)"

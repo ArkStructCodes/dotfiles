@@ -1,14 +1,28 @@
+filetypes = {
+    "bash",
+    "c",
+    "cpp",
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "rust",
+    "toml",
+    "yaml",
+}
+
 return {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "nvim-treesitter/nvim-treesitter-context" },
     config = function()
         require("nvim-treesitter.configs").setup {
-            ensure_installed = {
-                "bash", "c", "cpp", "javascript", "lua", "python", "rust",
-                "html", "css", "markdown", "json", "yaml", "toml",
-            },
+            ensure_installed = filetypes,
             highlight = { enable = true },
             indent = { enable = true },
         }
     end,
-    event = { "BufRead", "BufNewFile" },
+    ft = filetypes,
 }
