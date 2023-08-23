@@ -2,7 +2,6 @@
 # ===============================================
 
 # %b         => The current VCS branch.
-# %B...%b    => Change the text style to bold.
 # %F{x}...%f => Change the foreground color of the text to x.
 # %xv        => Access the x-th item of the 'psvar' array.
 
@@ -32,5 +31,5 @@ add-zsh-hook precmd _prompt_shorten_cwd
 add-zsh-hook precmd _prompt_vcs_branch
 
 # Apply the new prompts.
-PROMPT="%(?.%F{10}❱%f.%F{9}%? ❱%f) "
+PROMPT="%(?.%F{10}〉%f.%F{9}%? 〉%f)"
 RPROMPT="%F{13}%10v%f%F{12}%11v%f"

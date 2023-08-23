@@ -1,8 +1,5 @@
-# apt
-alias i="apt install"
-alias ac="apt autoclean"
-alias un="apt remove"
-alias aun="apt autoremove"
+# fzf
+alias fzf="fzf --prompt='〉' --pointer='〉'"
 
 # grep
 alias grep="grep --color"
@@ -15,13 +12,18 @@ alias l="lsd -l"
 # python
 alias py="python"
 
+d() {
+    local dst="$(fd . --absolute-path --type directory | fzf)"
+    [[ -z $dst ]] || cd $dst
+}
+
 activate() {
     local script="${1:-$(pwd)}/.venv/bin/activate"
     if [[ -f $script ]]; then
-        echo "Loading venv..."
+        echo "loading virtual enviroment..."
         source $script
     else
-        echo "No .venv directory found"
+        echo "no .venv directory found"
     fi
 }
 

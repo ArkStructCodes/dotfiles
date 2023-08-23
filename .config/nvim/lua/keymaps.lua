@@ -1,25 +1,25 @@
 -- Map the <Leader> key to space.
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 -- Map space to do nothing.
-noremap('n', '<Space>', '<Nop>')
+map("n", "<Space>", "<Nop>")
 
 -- Keep cursor in the center of the screen.
-noremap('n', 'n', 'nzz')
-noremap('n', 'N', 'Nzz')
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
 
 -- Disable all highlights.
-noremap('n', '<CR>', ':noh<CR>')
+map("n", "<CR>", ":noh<CR>")
 
 -- Manage moving around splits.
-noremap('n', '<Leader>h', '<C-w>h')
-noremap('n', '<Leader>j', '<C-w>j')
-noremap('n', '<Leader>k', '<C-w>k')
-noremap('n', '<Leader>l', '<C-w>l')
+map("n", "<Leader>h", "<C-w>h")
+map("n", "<Leader>j", "<C-w>j")
+map("n", "<Leader>k", "<C-w>k")
+map("n", "<Leader>l", "<C-w>l")
 
 -- Keep text selected while indenting.
-noremap('v', '<', '<gv')
-noremap('v', '>', '>gv')
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- Don't yank while pasting.
-noremap('v', 'p', '"_dP')
+map("v", "p", "_dP")

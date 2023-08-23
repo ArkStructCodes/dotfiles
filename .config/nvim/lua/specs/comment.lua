@@ -1,5 +1,5 @@
 return {
-    'numToStr/Comment.nvim',
-    opts = {},
-    event = { 'BufRead', 'BufNewFile' },
+    "numToStr/Comment.nvim",
+    opts = { mappings = { extra = false }},
+    event = { "BufRead", "BufNewFile" },
 }

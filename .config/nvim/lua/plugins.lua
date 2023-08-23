@@ -14,7 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load our plugin specs from files.
-local specpath = vim.fn.stdpath('config') .. '/lua/specs'
+local specpath = vim.fn.stdpath("config") .. "/lua/specs"
 local specs = {}
 for name, typ in vim.fs.dir(specpath) do
     if typ == "file" then
@@ -32,27 +32,23 @@ require("lazy").setup(specs, {
     performance = {
         rtp = {
             disabled_plugins = {
-                'gzip',
-                'zip',
-                'zipPlugin',
-                'tar',
-                'tarPlugin',
-                'getscript',
-                'getscriptPlugin',
-                'vimball',
-                'vimballPlugin',
-                '2html_plugin',
-                'matchit',
-                'matchparen',
-                'logiPat',
-                'rrhelper',
-                'netrw',
-                'netrwPlugin',
-                'netrwSettings',
-                'netrwFileHandlers',
-                'man',
-                'tutor_mode_plugin',
-            }
-        }
-    }
+                "gzip",
+                "zip",
+                "zipPlugin",
+                "tar",
+                "tarPlugin",
+                "getscript",
+                "getscriptPlugin",
+                "vimball",
+                "vimballPlugin",
+                "2html_plugin",
+                "matchit",
+                "matchparen",
+                "logiPat",
+                "rrhelper",
+                "man",
+                "tutor_mode_plugin",
+            },
+        },
+    },
 })

@@ -1,5 +1,12 @@
-function _G.noremap(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
+-- Enable the experimental module loader (0.9.0+).
+-- This eliminates the need for the impatient.nvim plugin.
+vim.loader.enable()
+
+function _G.map(mode, lhs, rhs, opts)
+    if not opts then
+        opts = { noremap = true, silent = true }
+    end
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 function _G.prequire(module)
@@ -11,11 +18,7 @@ function _G.prequire(module)
     end
 end
 
--- Enable the experimental module loader (0.9.0+).
--- This eliminates the need for the impatient.nvim plugin.
-vim.loader.enable()
-
--- Load the configuration.
+-- Load configuration modules.
 prequire("options")
 prequire("keymaps")
 prequire("plugins")

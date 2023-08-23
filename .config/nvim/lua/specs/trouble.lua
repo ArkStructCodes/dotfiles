@@ -3,7 +3,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("trouble").setup {}
-        noremap("n", "<Leader>t", ":Trouble<CR>")
+        map("n", "<Leader>t", ":Trouble<CR>")
     end,
-    keys = "<Leader>t",
+    keys = {{ "<Leader>t", mode = "n" }},
 }

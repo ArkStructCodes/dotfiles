@@ -1,11 +1,10 @@
 local o = vim.opt
 
--- Set options for completion.
-o.completeopt = { 'menu', 'menuone', 'noselect' }
+o.completeopt = { "menu", "menuone", "noselect" }
 
 -- Highlight the line that the cursor is in.
 o.cursorline = true
-o.cursorlineopt = { 'number', 'screenline' }
+o.cursorlineopt = { "number", "screenline" }
 
 -- Use 4 spaces instead of tabs for each indent step.
 o.expandtab = true
@@ -17,19 +16,16 @@ o.number = true
 o.relativenumber = true
 
 -- Only save the commands and search history in ShaDa.
-o.shada = { "'0", '<0', 'h', '/100', ':1000' }
+o.shada = { "'0", "<0", "h", "/100", ":1000" }
 
--- Don't show the current editor mode in the status line.
+-- Don"t show the current editor mode in the status line.
 o.showmode = false
 
 -- Display signs in the number column.
-o.signcolumn = 'number'
+o.signcolumn = "number"
 
--- Enable smart indenting.
-o.smartindent = true
-
--- Don't use a swapfile for the buffer.
+-- Don't use a swapfile buffers.
 o.swapfile = false
 
--- Enable 24 bit RGB color support in the TUI.
+-- Enable 24 bit color support in the TUI.
 o.termguicolors = true
