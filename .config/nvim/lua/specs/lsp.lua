@@ -46,10 +46,10 @@ return {
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        local servers = { "clangd", "pyright", "rust_analyzer" }
+        local servers = { "astro", "pyright", "rust_analyzer", "tsserver" }
         for i = 1, #servers do
             lspconfig[servers[i]].setup { capabilities = capabilities }
         end
     end,
-    ft = { "c", "python", "rust" },
+    ft = { "astro", "javascript", "jsx", "typescript", "tsx", "python", "rust" },
 }
