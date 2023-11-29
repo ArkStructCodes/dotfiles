@@ -31,5 +31,5 @@ add-zsh-hook precmd _prompt_shorten_cwd
 add-zsh-hook precmd _prompt_vcs_branch
 
 # Apply the new prompts.
-PROMPT="%(?.%F{10}〉%f.%F{9}%? 〉%f)"
+PROMPT="%(?.%F{10}〉 %f.%F{9}%? 〉 %f)"
 RPROMPT="%F{13}%10v%f%F{12}%11v%f"

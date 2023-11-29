@@ -1,6 +1,3 @@
-# fzf
-alias fzf="fzf --prompt='〉' --pointer='〉'"
-
 # grep
 alias grep="grep --color"
 alias egrep="grep -E --color"

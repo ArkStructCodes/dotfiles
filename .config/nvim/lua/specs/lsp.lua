@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "<Leader>r", vim.lsp.buf.rename, opts)
         map({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, opts)
         map("n", "gr", vim.lsp.buf.references, opts)
-        map("n", "<Leader>f", function()
+        map("n", "<Leader>cf", function()
             vim.lsp.buf.format { async = true }
         end, opts)
     end,
@@ -46,10 +46,10 @@ return {
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        local servers = { "astro", "pyright", "rust_analyzer", "tsserver" }
+        local servers = { "pyright", "rust_analyzer", "svelte", "tsserver" }
         for i = 1, #servers do
             lspconfig[servers[i]].setup { capabilities = capabilities }
         end
     end,
-    ft = { "astro", "javascript", "jsx", "typescript", "tsx", "python", "rust" },
+    ft = { "javascript", "jsx", "svelte", "typescript", "tsx", "python", "rust" },
 }

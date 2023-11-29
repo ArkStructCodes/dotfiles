@@ -1,4 +1,5 @@
 filetypes = {
+    "astro",
     "bash",
     "c",
     "cpp",
@@ -10,13 +11,14 @@ filetypes = {
     "markdown",
     "python",
     "rust",
+    "svelte",
+    "typescript",
     "toml",
     "yaml",
 }
 
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-context" },
     config = function()
         require("nvim-treesitter.configs").setup {
             ensure_installed = filetypes,
