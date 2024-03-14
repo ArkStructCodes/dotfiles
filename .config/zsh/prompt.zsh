@@ -1,35 +1,28 @@
-# DEPENDENCY: https://github.com/FernOfSigma/spat
-# ===============================================
+# this script requires spat
+# documentation: https://docs.rs/crate/spat/latest
 
-# %b         => The current VCS branch.
-# %F{x}...%f => Change the foreground color of the text to x.
-# %xv        => Access the x-th item of the 'psvar' array.
+autoload -U add-zsh-hook colors vcs_info
 
-
-# Enable parameter expansion, command substitution, and arithmetic
-# expansion in prompts.
-setopt PROMPT_SUBST
-
-# Load necessary built-in functions.
-autoload -Uz add-zsh-hook vcs_info
-
+# set the current git branch as the VCS message
 zstyle ":vcs_info:*" enable git
 zstyle ":vcs_info:git:*" formats " ⇒ %b"
 
 _prompt_shorten_cwd() {
     local cwd="$(print -P '%~')"
-    psvar[10]="$(spat ${cwd})"
+    psvar[1]="$(spat ${cwd})"
 }
 
 _prompt_vcs_branch() {
     vcs_info
-    psvar[11]="$vcs_info_msg_0_"
+    psvar[2]="$vcs_info_msg_0_"
 }
 
-# Execute these functions before reading every command.
 add-zsh-hook precmd _prompt_shorten_cwd
 add-zsh-hook precmd _prompt_vcs_branch
 
-# Apply the new prompts.
-PROMPT="%(?.%F{10}〉 %f.%F{9}%? 〉 %f)"
-RPROMPT="%F{13}%10v%f%F{12}%11v%f"
+# ternary    => %(condition.if.else)
+# last error => %?
+# text color => %F{color}...%f
+# psvar item => %nv
+PROMPT="%(?.%F{green}〉 %f.%F{red}%? 〉 %f)"
+RPROMPT="%F{magenta}%1v%f%F{cyan}%2v%f"

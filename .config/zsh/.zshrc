@@ -1,29 +1,46 @@
-# Load plugins using the sheldon plugin manager.
+# load and configure plugins using sheldon
+# documentation: https://sheldon.cli.rs
 eval "$(sheldon source)"
 
+local config=(
+    "options"
+    "aliases"
+    "prompt"
+)
 
-# CONFIG
-# ======
+for module in $config; do
+    source "$ZDOTDIR/$module.zsh"
+done
 
+ensure_dir() [[ -d $1 ]] || mkdir -p $1
+
+ensure_file() {
+    ensure_dir "$(dirname $1)"
+    [[ -f $1 ]] || touch $1
+}
+
+# enable storing command history
 HISTFILE="$XDG_STATE_HOME/zsh/history"
-
+ensure_file $HISTFILE
 HISTSIZE=10000
 SAVEHIST=10000
 
-source "$ZDOTDIR/core/aliases.zsh"
-source "$ZDOTDIR/core/options.zsh"
-source "$ZDOTDIR/prompt.zsh"
+local CACHE_DIR="$XDG_CACHE_HOME/zsh"
+ensure_dir $CACHE_DIR
 
-ensure_file "$HISTFILE"
-ensure_dir  "$XDG_CACHE_HOME/zsh"
-
-# Enable completion cache.
+# enable completion cache
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/compcache"
+zstyle ':completion:*' cache-path "$CACHE_DIR/compcache"
 
-# Highlight completion items.
+# highlight completion items
 zstyle ':completion:*' menu select
 
-# Load completions.
-autoload -Uz compinit
-zsh-defer compinit -d "$XDG_CACHE_HOME/zsh/compdump-$ZSH_VERSION" 
+local COMPDUMP="$CACHE_DIR/compdump-$ZSH_VERSION"
+autoload -U compinit
+
+# ensure completions are loaded when sheldon is missing
+if [[ -z "$(command -v zsh-defer)" ]]; then
+    compinit -d $COMPDUMP
+else
+    zsh-defer compinit -d $COMPDUMP
+fi
