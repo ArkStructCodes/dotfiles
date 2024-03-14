@@ -12,11 +12,17 @@ for module in $config; do
     source "$ZDOTDIR/$module.zsh"
 done
 
-ensure_dir() [[ -d $1 ]] || mkdir -p $1
+ensure_dir() {
+    if [[ ! -d $1 ]]; then
+        mkdir -p $1
+    fi
+}
 
 ensure_file() {
     ensure_dir "$(dirname $1)"
-    [[ -f $1 ]] || touch $1
+    if [[ ! -f $1 ]]; then
+        touch $1
+    fi
 }
 
 # enable storing command history
