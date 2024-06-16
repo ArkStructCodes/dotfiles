@@ -1,7 +1,7 @@
 -- Bootstrap lazy.nvim, our plugin manager.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    print("Installing lazy.nvim, restart and run :Lazy")
+    print("Installing plugins, restart neovim afterward")
     vim.fn.system({
         "git",
         "clone",
@@ -13,7 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load our plugin specs from files.
+-- Load our plugin specs from lua files.
 local specpath = vim.fn.stdpath("config") .. "/lua/specs"
 local specs = {}
 for name, typ in vim.fs.dir(specpath) do
