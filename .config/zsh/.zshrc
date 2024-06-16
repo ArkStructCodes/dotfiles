@@ -2,6 +2,9 @@
 # documentation: https://sheldon.cli.rs
 eval "$(sheldon source)"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 local config=(
     "options"
     "aliases"
