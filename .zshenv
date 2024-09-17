@@ -31,3 +31,6 @@ xdg_data_dirs+=(
     "/var/lib/flatpak/exports/share"
 )
 export XDG_DATA_DIRS
+
+# configure applications
+export QT_QPA_PLATFORMTHEME=qt6ct

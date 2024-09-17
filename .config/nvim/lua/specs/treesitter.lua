@@ -1,9 +1,10 @@
-filetypes = {
+languages = {
     "astro",
     "bash",
     "c",
     "cpp",
     "css",
+    "go",
     "html",
     "javascript",
     "json",
@@ -11,17 +12,22 @@ filetypes = {
     "markdown",
     "python",
     "rust",
+    "sql",
     "svelte",
     "typescript",
+    "tsx",
     "toml",
     "yaml",
 }
+
+filetypes = deepcopy(languages)
+table.insert(filetypes, "typescriptreact")
 
 return {
     "nvim-treesitter/nvim-treesitter",
     config = function()
         require("nvim-treesitter.configs").setup {
-            ensure_installed = filetypes,
+            ensure_installed = languages,
             highlight = { enable = true },
             indent = { enable = true },
         }
