@@ -3,3 +3,5 @@
 
 # NPM automatically expands paths in npmrc.
 .config/npm/npmrc
+
+**/__pycache__
