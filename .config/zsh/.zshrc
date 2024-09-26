@@ -2,12 +2,12 @@
 # documentation: https://sheldon.cli.rs
 eval "$(sheldon source)"
 
-# Set up fzf key bindings and fuzzy completion
+# set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-local config=(
-    "options"
+config=(
     "aliases"
+    "options"
     "prompt"
 )
 
@@ -15,17 +15,9 @@ for module in $config; do
     source "$ZDOTDIR/$module.zsh"
 done
 
-ensure_dir() {
-    if [[ ! -d $1 ]]; then
-        mkdir -p $1
-    fi
-}
-
 ensure_file() {
-    ensure_dir "$(dirname $1)"
-    if [[ ! -f $1 ]]; then
-        touch $1
-    fi
+    mkdir -p "$(dirname $1)"
+    [ -f "$1" ] && touch "$1"
 }
 
 # enable storing command history
@@ -35,7 +27,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 local CACHE_DIR="$XDG_CACHE_HOME/zsh"
-ensure_dir $CACHE_DIR
+mkdir -p $CACHE_DIR
 
 # enable completion cache
 zstyle ':completion:*' use-cache on
@@ -44,12 +36,10 @@ zstyle ':completion:*' cache-path "$CACHE_DIR/compcache"
 # highlight completion items
 zstyle ':completion:*' menu select
 
+autoload -Uz compinit
 local COMPDUMP="$CACHE_DIR/compdump-$ZSH_VERSION"
-autoload -U compinit
 
 # ensure completions are loaded when sheldon is missing
-if [[ -z "$(command -v zsh-defer)" ]]; then
-    compinit -d $COMPDUMP
-else
+[ -z "$(command -v zsh-defer)" ] &&
+    compinit -d $COMPDUMP ||
     zsh-defer compinit -d $COMPDUMP
-fi
