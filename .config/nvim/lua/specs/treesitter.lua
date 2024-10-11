@@ -21,7 +21,9 @@ languages = {
 }
 
 filetypes = deepcopy(languages)
+table.insert(filetypes, "sh")
 table.insert(filetypes, "typescriptreact")
+table.insert(filetypes, "zsh")
 
 return {
     "nvim-treesitter/nvim-treesitter",

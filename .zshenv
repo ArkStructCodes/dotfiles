@@ -6,6 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # relocate program data to XDG user directories
 export ANDROID_HOME="$XDG_DATA_HOME/Android"
+export ANDROID_AVD_HOME="$XDG_CONFIG_HOME/.android/avd"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
