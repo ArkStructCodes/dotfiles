@@ -52,7 +52,7 @@ return {
                 ["<A-Right>"] = cmp.mapping.scroll_docs(4),
                 ["<A-Left>"] = cmp.mapping.scroll_docs(-4),
                 ["<A-e>"] = cmp.mapping.abort(),
-                ["<Right>"] = cmp.mapping.confirm { select = true },
+                ["<A-a>"] = cmp.mapping.confirm { select = true },
             },
             sources = cmp.config.sources {
                 { name = "nvim_lsp" },

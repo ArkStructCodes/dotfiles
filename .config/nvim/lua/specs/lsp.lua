@@ -1,17 +1,28 @@
 function init()
-    -- Set custom diagnostic signs for the sign column.
-    for sign, icon in pairs({
-        Error = " ",
-        Warn = " ",
-        Hint = " ",
-        Info = " ",
-    }) do
-        local hl = "DiagnosticSign" .. sign
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
+    -- Prepare custom diagnostic styles for the sign column.
+    local icons = {
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+    }
+
+    local highlights = {
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+    }
 
     -- Change diagnostic text prefix.
-    vim.diagnostic.config { virtual_text = { prefix = "▮ " }}
+    vim.diagnostic.config({
+        virtual_lines = { prefix = "▮ " },
+        signs = {
+            text = icons,
+            numhl = highlights,
+            texthl = highlights,
+        }
+    })
 
     -- Global mappings.
     map("n", "[d", vim.diagnostic.goto_prev)

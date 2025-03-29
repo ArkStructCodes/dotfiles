@@ -43,14 +43,14 @@ keys = [
     Key([MOD], "q", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [MOD],
-        "f",
+        "g",
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
     Key([MOD], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
 
     # session management
-    Key([MOD, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([MOD, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
     Key([MOD, "control", "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # launching applications
@@ -58,6 +58,9 @@ keys = [
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="Launch terminal"),
     Key([MOD], "d", lazy.spawn("rofi -show drun"), desc="Show an application launcher"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Show a screenshot overlay"),
+    Key(["mod1"], "e", lazy.spawn("xdotool key --clearmodifiers r")),
+    Key(["mod1"], "d", lazy.spawn("xdotool key f")),
+    Key(["mod1"], "c", lazy.spawn("xdotool key v")),
 ]
 
 # setup traditional workspaces

@@ -26,6 +26,7 @@ path+=(
     "$XDG_DATA_HOME/npm/bin"
     "$XDG_DATA_HOME/flatpak/exports/bin"
     "/var/lib/flatpak/exports/bin"
+    "/usr/lib/extensions/vulkan/gamescope/bin"
     "$HOME/.local/bin"
 )
 export PATH
