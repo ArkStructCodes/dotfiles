@@ -1,0 +1,6 @@
+spawn-at-startup "swaync"
+spawn-at-startup "waybar"
+
+// "spawn-sh-at-startup" is required to run a shell command
+spawn-sh-at-startup "swaybg -i $XDG_CONFIG_HOME/niri/wallpaper.jpg"
+spawn-sh-at-startup "/lib/polkit-gnome/polkit-gnome-authentication-agent-1"

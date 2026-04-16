@@ -1,11 +1,11 @@
 languages = {
-    "astro",
     "bash",
     "c",
     "cpp",
     "css",
     "go",
     "html",
+    "ini",
     "javascript",
     "json",
     "lua",
@@ -20,19 +20,18 @@ languages = {
     "yaml",
 }
 
-filetypes = deepcopy(languages)
-table.insert(filetypes, "sh")
-table.insert(filetypes, "typescriptreact")
-table.insert(filetypes, "zsh")
-
 return {
     "nvim-treesitter/nvim-treesitter",
-    config = function()
-        require("nvim-treesitter.configs").setup {
-            ensure_installed = languages,
-            highlight = { enable = true },
-            indent = { enable = true },
-        }
+    branch = "main",
+    init = function()
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                vim.treesitter.start()
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
     end,
-    ft = filetypes,
+    config = function()
+        require("nvim-treesitter").install(languages)
+    end,
 }

@@ -1,13 +1,15 @@
--- Bootstrap lazy.nvim, our plugin manager.
+-- Bootstrap our plugin manager.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    print("Installing plugins, restart neovim afterward")
+local loop = vim.uv or vim.loop
+
+if not loop.fs_stat(lazypath) then
+    print("Attempting to clone lazy.nvim (requires git)")
     vim.fn.system({
         "git",
         "clone",
         "--filter=blob:none",
+        "--branch=stable",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
         lazypath,
     })
 end
