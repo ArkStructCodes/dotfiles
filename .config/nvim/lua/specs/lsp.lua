@@ -1,4 +1,4 @@
-function init()
+function setup_builtin_lsp()
     -- Prepare custom diagnostic styles for the sign column.
     local icons = {
         [vim.diagnostic.severity.ERROR] = " ",
@@ -55,11 +55,9 @@ end
 return {
     "hrsh7th/cmp-nvim-lsp",
     dependencies = { "neovim/nvim-lspconfig" },
-    init = init,
+    init = setup_builtin_lsp,
     config = function()
-        local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
         local servers = {
             "gopls",
             "pyright",
@@ -67,26 +65,9 @@ return {
             "ts_ls",
             "rust_analyzer",
         }
-        for i = 1, #servers do
-            lspconfig[servers[i]].setup({
-                capabilities = capabilities,
-                -- uncomment the following to enable inlay hints when supported
-                -- on_attach = function(client, bufnr)
-                --     if client.server_capabilities.inlayHintProvider then
-                --         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-                --     end
-                -- end
-            })
+        for _, language in ipairs(languages) do
+            vim.lsp.config(language, { capabilities = capabilities })
         end
+        vim.lsp.enable(servers)
     end,
-    ft = {
-        "go",
-        "javascript",
-        "javascriptreact",
-        "svelte",
-        "typescript",
-        "typescriptreact",
-        "python",
-        "rust",
-    }
 }

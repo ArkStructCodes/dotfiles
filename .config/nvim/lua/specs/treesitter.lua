@@ -26,7 +26,8 @@ return {
     init = function()
         vim.api.nvim_create_autocmd("FileType", {
             callback = function()
-                vim.treesitter.start()
+                -- silently ignore errors on unsupported buffers
+                pcall(vim.treesitter.start)
                 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end,
         })

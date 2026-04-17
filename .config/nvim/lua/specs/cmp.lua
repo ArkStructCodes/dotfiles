@@ -1,4 +1,4 @@
-KIND_ICONS = {
+local kind_icons = {
     Text = " ",
     Method = " ",
     Function = " ",
@@ -60,9 +60,9 @@ return {
             },
             formatting = {
                 fields = { "kind", "abbr" },
-                format = function(_, vim_item)
-                    vim_item.kind = KIND_ICONS[vim_item.kind] or ""
-                    return vim_item
+                format = function(_, item)
+                    item.kind = kind_icons[item.kind] or ""
+                    return item
                 end
             },
         }
