@@ -3,7 +3,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local loop = vim.uv or vim.loop
 
 if not loop.fs_stat(lazypath) then
-    print("Attempting to clone lazy.nvim (requires git)")
+    print("Trying to install lazy.nvim (requires git)")
     vim.fn.system({
         "git",
         "clone",
@@ -15,21 +15,7 @@ if not loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load our plugin specs from lua files.
-local specpath = vim.fn.stdpath("config") .. "/lua/specs"
-local specs = {}
-for name, typ in vim.fs.dir(specpath) do
-    if typ == "file" then
-        local module = name:match("(.+).lua$")
-        if module then
-            local spec = prequire("specs." .. module)
-            if spec then table.insert(specs, spec) end
-        end
-    end
-end
-
-
-require("lazy").setup(specs, {
+require("lazy").setup("specs", {
     lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
     performance = {
         rtp = {
